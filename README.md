@@ -21,10 +21,9 @@ use BrokeYourBike\EMQ\Interfaces\ConfigInterface;
 
 assert($config instanceof ConfigInterface);
 assert($httpClient instanceof \GuzzleHttp\ClientInterface);
-assert($psrCache instanceof \Psr\SimpleCache\CacheInterface);
 
-$apiClient = new Client($config, $httpClient, $psrCache);
-$apiClient->getAuthToken();
+$apiClient = new Client($config, $httpClient);
+$apiClient->transferStatus('reference');
 ```
 
 ## Authors

@@ -6,6 +6,11 @@
 
 namespace BrokeYourBike\EMQ\Interfaces;
 
+use DateTime;
+use BrokeYourBike\EMQ\Enums\SenderTypeEnum;
+use BrokeYourBike\EMQ\Enums\SegmentEnum;
+use BrokeYourBike\EMQ\Enums\DestinationEnum;
+
 /**
  * @author Ivan Stasiuk <ivan@stasi.uk>
  */
@@ -17,16 +22,15 @@ interface TransactionInterface
     public function getCountry(): string;
 
     public function getSenderId(): string;
-    public function getSenderType(): string;
-    public function getSenderSegment(): string;
+    public function getSenderSegment(): SegmentEnum;
     public function getSenderCountry(): string;
     public function getSenderFirstName(): string;
     public function getSenderLastName(): string;
-    public function getSenderDOB(): ?string;
+    public function getSenderDOB(): ?DateTime;
     public function getSenderPhone(): ?string;
 
-    public function getRecipientType(): string;
-    public function getRecipientSegment(): string;
+    public function getRecipientDestination(): DestinationEnum;
+    public function getRecipientSegment(): SegmentEnum;
     public function getRecipientCountry(): string;
     public function getRecipientFirstName(): string;
     public function getRecipientLastName(): string;
