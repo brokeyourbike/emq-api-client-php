@@ -16,7 +16,9 @@ use BrokeYourBike\HasSourceModel\HasSourceModelTrait;
 use BrokeYourBike\EMQ\Responses\TransferResponse;
 use BrokeYourBike\EMQ\Interfaces\TransactionInterface;
 use BrokeYourBike\EMQ\Interfaces\ConfigInterface;
+use BrokeYourBike\EMQ\Enums\SourceOfFundsEnum;
 use BrokeYourBike\EMQ\Enums\SenderTypeEnum;
+use BrokeYourBike\EMQ\Enums\RemitancePurposeEnum;
 
 /**
  * @author Ivan Stasiuk <ivan@stasi.uk>
@@ -57,12 +59,12 @@ class Client implements HttpClientInterface
                 ],
                 'source' => [
                     'type' => SenderTypeEnum::PARTNER->value,
+                    'segment' => $transaction->getSenderSegment()->value,
                     'country' => $transaction->getSenderCountry(),
                     'address_line' => $transaction->getSenderCountry(),
                     'address_city' => $transaction->getSenderCountry(),
                     'address_country' => $transaction->getSenderCountry(),
                     'nationality' => $transaction->getSenderCountry(),
-                    'segment' => $transaction->getSenderSegment()->value,
                     'legal_name_first' => $transaction->getSenderFirstName(),
                     'legal_name_last' => $transaction->getSenderLastName(),
                     'date_of_birth' => $transaction->getSenderDOB()->format('Y-m-d'),
@@ -77,14 +79,7 @@ class Client implements HttpClientInterface
                     'address_line' => $transaction->getRecipientCountry(),
                     'legal_name_first' => $transaction->getRecipientFirstName(),
                     'legal_name_last' => $transaction->getRecipientLastName(),
-                ],
-                'compliance' => [
-                    'source_of_funds' => '01',
-                    'remittance_purpose' => '007-01',
-                    'relationship' => [
-                        'code' => '11',
-                    ]
-                ],
+                ]
             ],
         ];
 
@@ -96,6 +91,15 @@ class Client implements HttpClientInterface
         }
         if ($transaction->getRecipientAccountNumber()) {
             $options[\GuzzleHttp\RequestOptions::JSON]['destination']['account_number'] = $transaction->getRecipientAccountNumber();
+        }
+        if ($transaction->getRecipientIBAN()) {
+            $options[\GuzzleHttp\RequestOptions::JSON]['destination']['iban'] = $transaction->getRecipientIBAN();
+        }
+        if ($transaction->getRecipientWalletId()) {
+            $options[\GuzzleHttp\RequestOptions::JSON]['destination']['ewallet_id'] = $transaction->getRecipientWalletId();
+        }
+        if ($transaction->getRecipientPartner()) {
+            $options[\GuzzleHttp\RequestOptions::JSON]['destination']['partner'] = $transaction->getRecipientPartner();
         }
         if ($transaction->getRecipientPhone()) {
             $options[\GuzzleHttp\RequestOptions::JSON]['destination']['mobile_number'] = $transaction->getRecipientPhone();

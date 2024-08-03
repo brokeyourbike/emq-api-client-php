@@ -15,7 +15,7 @@ jobs:
         php-version: [8.1]
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - uses: shivammathur/setup-php@v2
       with:
         php-version: "${{ matrix.php-version }}"
@@ -31,7 +31,7 @@ jobs:
         coverageCommand: ''
         coverageLocations: ./coverage.xml:clover
 
-    - uses: codecov/codecov-action@v3
+    - uses: codecov/codecov-action@v4
       continue-on-error: true
       with:
         files: ./coverage.xml

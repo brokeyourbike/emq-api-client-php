@@ -19,14 +19,13 @@ interface TransactionInterface
     public function getReference(): string;
     public function getCurrency(): string;
     public function getAmount(): float;
-    public function getCountry(): string;
 
     public function getSenderId(): string;
     public function getSenderSegment(): SegmentEnum;
     public function getSenderCountry(): string;
     public function getSenderFirstName(): string;
     public function getSenderLastName(): string;
-    public function getSenderDOB(): ?DateTime;
+    public function getSenderDOB(): DateTime;
     public function getSenderPhone(): ?string;
 
     public function getRecipientDestination(): DestinationEnum;
@@ -37,5 +36,8 @@ interface TransactionInterface
     public function getRecipientBankCode(): ?string;
     public function getRecipientSwiftCode(): ?string;
     public function getRecipientAccountNumber(): ?string;
+    public function getRecipientIBAN(): ?string;
+    public function getRecipientWalletId(): ?string;
+    public function getRecipientPartner(): ?string;
     public function getRecipientPhone(): ?string;
 }
