@@ -110,7 +110,7 @@ class Client implements HttpClientInterface
         }
 
         $response = $this->httpClient->request(
-            HttpMethodEnum::POST->value,
+            HttpMethodEnum::PUT->value,
             (string) $this->resolveUriFor($this->config->getUrl(), "transfers/{$transaction->getReference()}"),
             $options
         );
