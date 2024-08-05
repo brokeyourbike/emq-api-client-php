@@ -1,5 +1,13 @@
 # Changelog
 
+### [0.1.1](https://www.github.com/brokeyourbike/emq-api-client-php/compare/v0.1.0...v0.1.1) (2024-08-05)
+
+
+### Bug Fixes
+
+* no message ([608d9b8](https://www.github.com/brokeyourbike/emq-api-client-php/commit/608d9b8886e0c60dee88e806f0134da059a763f4))
+* put ([ce96fd7](https://www.github.com/brokeyourbike/emq-api-client-php/commit/ce96fd713cafd8273966f07e8d31c617b2206b34))
+
 ## 0.1.0 (2024-08-03)
 
 
