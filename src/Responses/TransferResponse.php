@@ -15,7 +15,6 @@ use BrokeYourBike\DataTransferObject\JsonResponse;
 class TransferResponse extends JsonResponse
 {
     public ?string $reason;
-    public ?string $message;
     public ?string $state;
     public ?string $reference;
 
