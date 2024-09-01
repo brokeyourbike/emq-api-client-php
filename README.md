@@ -1,4 +1,4 @@
-# emq-api-client-php
+# emq-api-client
 
 [![Latest Stable Version](https://img.shields.io/github/v/release/brokeyourbike/emq-api-client-php)](https://github.com/brokeyourbike/emq-api-client-php/releases)
 [![Total Downloads](https://poser.pugx.org/brokeyourbike/emq-api-client/downloads)](https://packagist.org/packages/brokeyourbike/emq-api-client)
