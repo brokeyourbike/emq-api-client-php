@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.1.2](https://www.github.com/brokeyourbike/emq-api-client-php/compare/v0.1.1...v0.1.2) (2024-09-01)
+
+
+### Miscellaneous Chores
+
+* suffix ([ddfce96](https://www.github.com/brokeyourbike/emq-api-client-php/commit/ddfce96b5d52b990e4507728a2470fc445936f33))
+
 ### [0.1.1](https://www.github.com/brokeyourbike/emq-api-client-php/compare/v0.1.0...v0.1.1) (2024-08-05)
 
 
