@@ -23,16 +23,18 @@ interface TransactionInterface
     public function getSenderId(): string;
     public function getSenderSegment(): SegmentEnum;
     public function getSenderCountry(): string;
-    public function getSenderFirstName(): string;
-    public function getSenderLastName(): string;
+    public function getSenderCompanyName(): ?string;
+    public function getSenderFirstName(): ?string;
+    public function getSenderLastName(): ?string;
     public function getSenderDOB(): DateTime;
     public function getSenderPhone(): ?string;
 
     public function getRecipientDestination(): DestinationEnum;
     public function getRecipientSegment(): SegmentEnum;
     public function getRecipientCountry(): string;
-    public function getRecipientFirstName(): string;
-    public function getRecipientLastName(): string;
+    public function getRecipientCompanyName(): ?string;
+    public function getRecipientFirstName(): ?string;
+    public function getRecipientLastName(): ?string;
     public function getRecipientBankCode(): ?string;
     public function getRecipientSwiftCode(): ?string;
     public function getRecipientAccountNumber(): ?string;

@@ -18,6 +18,7 @@ use BrokeYourBike\EMQ\Interfaces\TransactionInterface;
 use BrokeYourBike\EMQ\Interfaces\ConfigInterface;
 use BrokeYourBike\EMQ\Enums\SourceOfFundsEnum;
 use BrokeYourBike\EMQ\Enums\SenderTypeEnum;
+use BrokeYourBike\EMQ\Enums\SegmentEnum;
 use BrokeYourBike\EMQ\Enums\RemitancePurposeEnum;
 
 /**
@@ -65,8 +66,6 @@ class Client implements HttpClientInterface
                     'address_city' => $transaction->getSenderCountry(),
                     'address_country' => $transaction->getSenderCountry(),
                     'nationality' => $transaction->getSenderCountry(),
-                    'legal_name_first' => $transaction->getSenderFirstName(),
-                    'legal_name_last' => $transaction->getSenderLastName(),
                     'date_of_birth' => $transaction->getSenderDOB()->format('Y-m-d'),
                     'sender_id' => $transaction->getSenderId(),
                 ],
@@ -77,12 +76,33 @@ class Client implements HttpClientInterface
                     'address_country' => $transaction->getRecipientCountry(),
                     'address_city' => $transaction->getRecipientCountry(),
                     'address_line' => $transaction->getRecipientCountry(),
-                    'legal_name_first' => $transaction->getRecipientFirstName(),
-                    'legal_name_last' => $transaction->getRecipientLastName(),
                 ]
             ],
         ];
 
+        if ($transaction->getSenderFirstName() && $transaction->getSenderSegment() === SegmentEnum::INDIVIDUAL) {
+            $options[\GuzzleHttp\RequestOptions::JSON]['source']['legal_name_first'] = $transaction->getSenderFirstName();
+        }
+        if ($transaction->getSenderLastName() && $transaction->getSenderSegment() === SegmentEnum::INDIVIDUAL) {
+            $options[\GuzzleHttp\RequestOptions::JSON]['source']['legal_name_last'] = $transaction->getSenderLastName();
+        }
+        if ($transaction->getSenderCompanyName() && $transaction->getSenderSegment() === SegmentEnum::BUSINESS) {
+            $options[\GuzzleHttp\RequestOptions::JSON]['source']['company_name'] = $transaction->getSenderCompanyName();
+            $options[\GuzzleHttp\RequestOptions::JSON]['source']['company_trading_name'] = $transaction->getSenderCompanyName();
+        }
+        if ($transaction->getSenderSegment() === SegmentEnum::BUSINESS) {
+            $options[\GuzzleHttp\RequestOptions::JSON]['source']['company_registration_country'] = $transaction->getSenderCountry();
+        }
+
+        if ($transaction->getRecipientFirstName() && $transaction->getRecipientSegment() === SegmentEnum::INDIVIDUAL) {
+            $options[\GuzzleHttp\RequestOptions::JSON]['destination']['legal_name_first'] = $transaction->getRecipientFirstName();
+        }
+        if ($transaction->getRecipientLastName() && $transaction->getRecipientSegment() === SegmentEnum::INDIVIDUAL) {
+            $options[\GuzzleHttp\RequestOptions::JSON]['destination']['legal_name_last'] = $transaction->getRecipientLastName();
+        }
+        if ($transaction->getRecipientCompanyName() && $transaction->getRecipientSegment() === SegmentEnum::BUSINESS) {
+            $options[\GuzzleHttp\RequestOptions::JSON]['destination']['company_name'] = $transaction->getRecipientCompanyName();
+        }
         if ($transaction->getRecipientBankCode()) {
             $options[\GuzzleHttp\RequestOptions::JSON]['destination']['bank'] = $transaction->getRecipientBankCode();
         }
