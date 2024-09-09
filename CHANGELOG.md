@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://www.github.com/brokeyourbike/emq-api-client-php/compare/v0.1.2...v0.2.0) (2024-09-09)
+
+
+### Features
+
+* company name ([896ceea](https://www.github.com/brokeyourbike/emq-api-client-php/commit/896ceeaa1b7aeec07e0041adac6fd8c295f3336b))
+
 ### [0.1.2](https://www.github.com/brokeyourbike/emq-api-client-php/compare/v0.1.1...v0.1.2) (2024-09-01)
 
 
