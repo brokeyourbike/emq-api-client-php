@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://www.github.com/brokeyourbike/emq-api-client-php/compare/v0.2.0...v0.3.0) (2025-01-02)
+
+
+### Features
+
+* add info enum ([c6e830d](https://www.github.com/brokeyourbike/emq-api-client-php/commit/c6e830d111894bda3ab412dfee11195b3c3f6fbf))
+
 ## [0.2.0](https://www.github.com/brokeyourbike/emq-api-client-php/compare/v0.1.2...v0.2.0) (2024-09-09)
 
 
