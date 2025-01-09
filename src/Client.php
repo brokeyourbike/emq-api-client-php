@@ -62,8 +62,8 @@ class Client implements HttpClientInterface
                     'type' => SenderTypeEnum::PARTNER->value,
                     'segment' => $transaction->getSenderSegment()->value,
                     'country' => $transaction->getSenderCountry(),
-                    'address_line' => $transaction->getSenderCountry(),
-                    'address_city' => $transaction->getSenderCountry(),
+                    'address_line' => $transaction->getSenderAddress(),
+                    'address_city' => $transaction->getSenderCity(),
                     'address_country' => $transaction->getSenderCountry(),
                     'nationality' => $transaction->getSenderCountry(),
                     'date_of_birth' => $transaction->getSenderDOB()->format('Y-m-d'),
@@ -74,8 +74,8 @@ class Client implements HttpClientInterface
                     'segment' => $transaction->getRecipientSegment()->value,
                     'country' => $transaction->getRecipientCountry(),
                     'address_country' => $transaction->getRecipientCountry(),
-                    'address_city' => $transaction->getRecipientCountry(),
-                    'address_line' => $transaction->getRecipientCountry(),
+                    'address_city' => $transaction->getRecipientCity(),
+                    'address_line' => $transaction->getRecipientAddress(),
                 ]
             ],
         ];

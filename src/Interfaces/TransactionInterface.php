@@ -23,6 +23,9 @@ interface TransactionInterface
     public function getSenderId(): string;
     public function getSenderSegment(): SegmentEnum;
     public function getSenderCountry(): string;
+    public function getSenderCity(): string;
+    public function getSenderPostCode(): string;
+    public function getSenderAddress(): string;
     public function getSenderCompanyName(): ?string;
     public function getSenderFirstName(): ?string;
     public function getSenderLastName(): ?string;
@@ -32,6 +35,9 @@ interface TransactionInterface
     public function getRecipientDestination(): DestinationEnum;
     public function getRecipientSegment(): SegmentEnum;
     public function getRecipientCountry(): string;
+    public function getRecipientCity(): string;
+    public function getRecipientPostCode(): string;
+    public function getRecipientAddress(): string;
     public function getRecipientCompanyName(): ?string;
     public function getRecipientFirstName(): ?string;
     public function getRecipientLastName(): ?string;
