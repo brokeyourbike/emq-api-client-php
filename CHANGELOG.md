@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.4.1](https://www.github.com/brokeyourbike/emq-api-client-php/compare/v0.4.0...v0.4.1) (2025-01-11)
+
+
+### Miscellaneous Chores
+
+* **deps-dev:** bump nesbot/carbon from 2.72.5 to 2.72.6 ([3dba320](https://www.github.com/brokeyourbike/emq-api-client-php/commit/3dba3209b644dc7f5649657651a30c3e0838e0a6))
+
 ## [0.4.0](https://www.github.com/brokeyourbike/emq-api-client-php/compare/v0.3.0...v0.4.0) (2025-01-09)
 
 
