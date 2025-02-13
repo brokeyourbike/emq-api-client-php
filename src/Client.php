@@ -159,6 +159,27 @@ class Client implements HttpClientInterface
         return new TransferResponse($response);
     }
 
+    public function cancelTransfer(string $reference): TransferResponse
+    {
+        $options = [
+            \GuzzleHttp\RequestOptions::HEADERS => [
+                'Accept' => 'application/json',
+            ],
+            \GuzzleHttp\RequestOptions::AUTH => [
+                $this->config->getUsername(),
+                $this->config->getPassword(),
+            ],
+        ];
+
+        $response = $this->httpClient->request(
+            HttpMethodEnum::POST->value,
+            (string) $this->resolveUriFor($this->config->getUrl(), "transfers/{$reference}/cancel"),
+            $options
+        );
+
+        return new TransferResponse($response);
+    }
+
     public function transferStatus(string $reference): TransferResponse
     {
         $options = [
