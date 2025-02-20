@@ -76,7 +76,11 @@ class Client implements HttpClientInterface
                     'address_country' => $transaction->getRecipientCountry(),
                     'address_city' => $transaction->getRecipientCity(),
                     'address_line' => $transaction->getRecipientAddress(),
-                ]
+                ],
+                'compliance' => [
+                    'remittance_purpose' => $transaction->getRemittancePurpose()->value,
+                    'source_of_funds' => $transaction->getSourceOfFunds()->value,
+                ],
             ],
         ];
 
@@ -123,6 +127,16 @@ class Client implements HttpClientInterface
         }
         if ($transaction->getRecipientPhone()) {
             $options[\GuzzleHttp\RequestOptions::JSON]['destination']['mobile_number'] = $transaction->getRecipientPhone();
+        }
+
+        if ($transaction->getRelationship()) {
+            $options[\GuzzleHttp\RequestOptions::JSON]['compliance']['relationship'] = [
+                'code' => $transaction->getRelationship()->value,
+            ];
+
+            if ($transaction->getRelationshipDescription()) {
+                $options[\GuzzleHttp\RequestOptions::JSON]['compliance']['relationship']['relation'] = $transaction->getRelationshipDescription();
+            }
         }
 
         if ($transaction instanceof SourceModelInterface){

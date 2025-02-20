@@ -7,8 +7,11 @@
 namespace BrokeYourBike\EMQ\Interfaces;
 
 use DateTime;
+use BrokeYourBike\EMQ\Enums\SourceOfFundsEnum;
 use BrokeYourBike\EMQ\Enums\SenderTypeEnum;
 use BrokeYourBike\EMQ\Enums\SegmentEnum;
+use BrokeYourBike\EMQ\Enums\RemitancePurposeEnum;
+use BrokeYourBike\EMQ\Enums\RelationshipEnum;
 use BrokeYourBike\EMQ\Enums\DestinationEnum;
 
 /**
@@ -48,4 +51,9 @@ interface TransactionInterface
     public function getRecipientWalletId(): ?string;
     public function getRecipientPartner(): ?string;
     public function getRecipientPhone(): ?string;
+
+    public function getSourceOfFunds(): SourceOfFundsEnum;
+    public function getRemittancePurpose(): RemitancePurposeEnum;
+    public function getRelationship(): ?RelationshipEnum;
+    public function getRelationshipDescription(): ?string;
 }
