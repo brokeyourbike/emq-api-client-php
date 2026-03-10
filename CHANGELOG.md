@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.6.1](https://www.github.com/brokeyourbike/emq-api-client-php/compare/v0.6.0...v0.6.1) (2026-03-10)
+
+
+### Miscellaneous Chores
+
+* **deps-dev:** bump phpunit/phpunit from 9.6.20 to 9.6.33 ([9b6f96e](https://www.github.com/brokeyourbike/emq-api-client-php/commit/9b6f96ec6a82522f42ce29b92fe41cf4bfd90d5b))
+
 ## [0.6.0](https://www.github.com/brokeyourbike/emq-api-client-php/compare/v0.5.0...v0.6.0) (2025-02-20)
 
 
