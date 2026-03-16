@@ -11,15 +11,12 @@ use BrokeYourBike\ResolveUri\ResolveUriTrait;
 use BrokeYourBike\HttpEnums\HttpMethodEnum;
 use BrokeYourBike\HttpClient\HttpClientTrait;
 use BrokeYourBike\HttpClient\HttpClientInterface;
-use BrokeYourBike\HasSourceModel\SourceModelInterface;
 use BrokeYourBike\HasSourceModel\HasSourceModelTrait;
 use BrokeYourBike\EMQ\Responses\TransferResponse;
 use BrokeYourBike\EMQ\Interfaces\TransactionInterface;
 use BrokeYourBike\EMQ\Interfaces\ConfigInterface;
-use BrokeYourBike\EMQ\Enums\SourceOfFundsEnum;
 use BrokeYourBike\EMQ\Enums\SenderTypeEnum;
 use BrokeYourBike\EMQ\Enums\SegmentEnum;
-use BrokeYourBike\EMQ\Enums\RemitancePurposeEnum;
 
 /**
  * @author Ivan Stasiuk <ivan@stasi.uk>
@@ -139,8 +136,8 @@ class Client implements HttpClientInterface
             }
         }
 
-        if ($transaction instanceof SourceModelInterface){
-            $options[\BrokeYourBike\HasSourceModel\Enums\RequestOptions::SOURCE_MODEL] = $transaction;
+        if ($this->getSourceModel() != null){
+            $options[\BrokeYourBike\HasSourceModel\Enums\RequestOptions::SOURCE_MODEL] = $this->getSourceModel();
         }
 
         $response = $this->httpClient->request(
@@ -164,6 +161,10 @@ class Client implements HttpClientInterface
             ],
         ];
 
+        if ($this->getSourceModel() != null){
+            $options[\BrokeYourBike\HasSourceModel\Enums\RequestOptions::SOURCE_MODEL] = $this->getSourceModel();
+        }
+
         $response = $this->httpClient->request(
             HttpMethodEnum::POST->value,
             (string) $this->resolveUriFor($this->config->getUrl(), "transfers/{$reference}/confirm"),
@@ -185,6 +186,10 @@ class Client implements HttpClientInterface
             ],
         ];
 
+        if ($this->getSourceModel() != null){
+            $options[\BrokeYourBike\HasSourceModel\Enums\RequestOptions::SOURCE_MODEL] = $this->getSourceModel();
+        }
+
         $response = $this->httpClient->request(
             HttpMethodEnum::POST->value,
             (string) $this->resolveUriFor($this->config->getUrl(), "transfers/{$reference}/cancel"),
@@ -205,6 +210,10 @@ class Client implements HttpClientInterface
                 $this->config->getPassword(),
             ],
         ];
+
+        if ($this->getSourceModel() != null){
+            $options[\BrokeYourBike\HasSourceModel\Enums\RequestOptions::SOURCE_MODEL] = $this->getSourceModel();
+        }
 
         $response = $this->httpClient->request(
             HttpMethodEnum::GET->value,
