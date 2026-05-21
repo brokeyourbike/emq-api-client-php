@@ -136,6 +136,10 @@ class Client implements HttpClientInterface
             }
         }
 
+        if ($transaction->getRecipientChargeCode()) {
+            $options[\GuzzleHttp\RequestOptions::JSON]['destination']['charge_code'] = $transaction->getRecipientChargeCode()->value;
+        }
+
         if ($this->getSourceModel() != null){
             $options[\BrokeYourBike\HasSourceModel\Enums\RequestOptions::SOURCE_MODEL] = $this->getSourceModel();
         }

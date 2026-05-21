@@ -6,9 +6,9 @@
 
 namespace BrokeYourBike\EMQ\Interfaces;
 
+use BrokeYourBike\EMQ\Enums\ChargeCodeEnum;
 use DateTime;
 use BrokeYourBike\EMQ\Enums\SourceOfFundsEnum;
-use BrokeYourBike\EMQ\Enums\SenderTypeEnum;
 use BrokeYourBike\EMQ\Enums\SegmentEnum;
 use BrokeYourBike\EMQ\Enums\RemitancePurposeEnum;
 use BrokeYourBike\EMQ\Enums\RelationshipEnum;
@@ -36,6 +36,7 @@ interface TransactionInterface
     public function getSenderPhone(): ?string;
 
     public function getRecipientDestination(): DestinationEnum;
+    public function getRecipientChargeCode(): ?ChargeCodeEnum;
     public function getRecipientSegment(): SegmentEnum;
     public function getRecipientCountry(): string;
     public function getRecipientCity(): string;
