@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.9.0](https://www.github.com/brokeyourbike/emq-api-client-php/compare/v0.8.1...v0.9.0) (2026-05-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* charge code
+
+### Features
+
+* charge code ([5a8f1cf](https://www.github.com/brokeyourbike/emq-api-client-php/commit/5a8f1cfa8cba5372d0e17e4c448b4f40e9f8cb7a))
+
 ### [0.8.1](https://www.github.com/brokeyourbike/emq-api-client-php/compare/v0.8.0...v0.8.1) (2026-03-16)
 
 
