@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.10.0](https://www.github.com/brokeyourbike/emq-api-client-php/compare/v0.9.0...v0.10.0) (2026-10-15)
+
+
+### Features
+
+* pass sort code ([9017f07](https://www.github.com/brokeyourbike/emq-api-client-php/commit/9017f072619504063a445f14113a6c6aad59b226))
+
 ## [0.9.0](https://www.github.com/brokeyourbike/emq-api-client-php/compare/v0.8.1...v0.9.0) (2026-05-21)
 
 
