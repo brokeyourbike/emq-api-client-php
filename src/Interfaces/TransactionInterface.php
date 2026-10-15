@@ -46,6 +46,7 @@ interface TransactionInterface
     public function getRecipientFirstName(): ?string;
     public function getRecipientLastName(): ?string;
     public function getRecipientBankCode(): ?string;
+    public function getRecipientSortCode(): ?string;
     public function getRecipientSwiftCode(): ?string;
     public function getRecipientAccountNumber(): ?string;
     public function getRecipientIBAN(): ?string;

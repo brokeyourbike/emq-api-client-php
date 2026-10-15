@@ -107,6 +107,9 @@ class Client implements HttpClientInterface
         if ($transaction->getRecipientBankCode()) {
             $options[\GuzzleHttp\RequestOptions::JSON]['destination']['bank'] = $transaction->getRecipientBankCode();
         }
+        if ($transaction->getRecipientSortCode()) {
+            $options[\GuzzleHttp\RequestOptions::JSON]['destination']['sort_code'] = $transaction->getRecipientSortCode();
+        }
         if ($transaction->getRecipientSwiftCode()) {
             $options[\GuzzleHttp\RequestOptions::JSON]['destination']['swift_code'] = $transaction->getRecipientSwiftCode();
         }
